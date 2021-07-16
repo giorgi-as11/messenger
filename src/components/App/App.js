@@ -25,15 +25,15 @@ function App() {
                 {showChild ? <Example text="Welcome!" /> : null}
                 {showChild && <ExampleClass text="Welcome!" />}
                 <input className="bordered" placeholder="Инпут для примера" onChange={e => console.log(e)} />
-                <form className="email" /*onSubmit={handleMessageList}*/>
+                <form className="email" onSubmit={handleMessageList}>
                     <input type="text" className="input" onChange={e => setMessageList(e.target.value)} placeholder="Enter Your Email"></input>
-                    <button value="Subscribe" onClick={handleMessageList} className="button">
-                    </button>
+                    <input type="submit" value="Subscribe" onClick={handleMessageList} className="button">
+                    </input>
 
                 </form>
                 {/* messageList.map((message) => <div>{message}</div>) */}
                 
-                {/* {console.log(messageList)} */}
+                {console.log(messageList)}
             </div>
         </div>
     );
