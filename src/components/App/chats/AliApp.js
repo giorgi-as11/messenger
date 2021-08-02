@@ -53,44 +53,49 @@ function AlisApp() {
         setInputValue(``)
     }
     return <div className='app'>
-        <div className="chat__members">
-            <div><AlignAlisChat /></div>
-            <div className="chat">
-                {messageList.map((message, index) => {
-                    return <Message author={message.author} text={message.text} />
-                })}
-            </div>
-        </div>
+        <div className="flex">
+            <div className="chat__members">
+                <div><AlignAlisChat /></div>
 
-        <form className="email" onSubmit={handleSubmit}>
-            {/* <input
+            </div>
+            <div>
+                <div className="chat">
+                    {messageList.map((message, index) => {
+                        return <Message author={message.author} text={message.text} />
+                    })}
+                </div>
+                <form className="email" onSubmit={handleSubmit}>
+                    {/* <input
                 className="input"
                 value={inputValue}
                 onChange={inputValueChange}
                 placeholder='Text here'
             >
             </input> */}
-            <TextField
-                // id="outlined-helperText"+
-                className="input"
-                value={inputValue}
-                onChange={inputValueChange}
-                label="Helper text"
-                autoFocus
-                required
-                defaultValue="Subscribe"
-                helperText="Some important text"
-                variant="outlined"
-            />
+                    <TextField
+                        // id="outlined-helperText"+
+                        className="input"
+                        value={inputValue}
+                        onChange={inputValueChange}
+                        label="Helper text"
+                        autoFocus
+                        required
+                        defaultValue="Subscribe"
+                        helperText="Some important text"
+                        variant="outlined"
+                    />
 
-            {/* <input type="submit" className="button">
+                    {/* <input type="submit" className="button">
             </input>             */}
-            <Button variant="contained" onClick={handleSubmit} className="button" color="primary">
-                Primary
-            </Button>
+                    <Button variant="contained" onClick={handleSubmit} className="button" color="primary">
+                        Primary
+                    </Button>
 
-        </form>
+                </form>
+            </div>
 
+
+        </div>
 
     </div>
 

@@ -5,6 +5,7 @@ import "../components/App/App.css"
 import App from '../components/App/App';
 // import AlignAlisChat from "../components/App/chats/chatAli";
 import AlisApp from "../components/App/chats/AliApp";
+import Profile from "../react__5/profile/profileComponent";
 export default function router() {
     return <div>
         <div className="bordered row">
@@ -20,14 +21,12 @@ export default function router() {
             <Route path="/chats">
                 <p>chat</p>
                 <App />
-
-                <Route path="/chats/oleg">
-                    <p>oleg</p>
-                </Route>
             </Route>
-
+            <Route path="/chats/oleg">
+                <p>oleg</p>
+            </Route>
             <Route path="/profile">
-                <p>profile</p>
+                <Profile />
             </Route>
             <Route>
                 <App />

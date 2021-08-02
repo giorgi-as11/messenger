@@ -16,8 +16,7 @@
   flex-direction: column;
 }
 .chat__members {
-  margin: 70px 500px 0 0;
-  width: 1120px;
+  margin: 0 40px;
   justify-content: space-evenly;
   display: flex;
   /* float: left; */
@@ -123,4 +122,9 @@ a:hover {
 .Link {
   padding: 15px 5px;
   text-decoration: none;
+}
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
