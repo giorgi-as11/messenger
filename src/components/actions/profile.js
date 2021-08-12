@@ -15,3 +15,13 @@ export const changeIsOnline = (isOnline) => ({
         isOnline
     }
 })
+
+export const changeIsOnlineThunk = (isOnline) => {
+    return (dispatch, getState) => {
+
+        console.log(getState())
+        setTimeout(() =>
+            dispatch(changeIsOnline(isOnline)), 2000)
+
+    }
+}
