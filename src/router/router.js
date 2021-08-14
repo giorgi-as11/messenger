@@ -1,45 +1,3 @@
-// import React from "react"
-// import { Switch, Route } from "react-router"
-// import { Link } from "react-router-dom"
-// import "../components/App/App.css"
-// import App from '../components/App/App';
-// // import AlignAlisChat from "../components/App/chats/chatAli";
-// import AlisApp from "../components/App/chats/AliApp";
-// import Profile from "../react__5/profile/profileComponent";
-// import chat from "../react__5/chat/chat";
-// export default function router() {
-//     return <div>
-//         <div className="bordered row">
-//             <Link className="Link" to="/chats">chats</Link>
-//             <Link to="/profile" className="Link">profile</Link>
-//         </div>
-//         <Switch>
-//             <Route path="/chats/Ali" >
-//                 <div className="bordered">
-//                     <AlisApp />
-//                 </div>
-//             </Route>
-//             <Route path="/chats/:chatId">
-//                 <p>chatId</p>
-//                 <Chat />
-//             </Route>
-//             <Route path="/chats">
-//                 <p>chat</p>
-//                 <App />
-//             </Route>
-//             <Route path="/chats/oleg">
-//                 <p>oleg</p>
-//             </Route>
-//             <Route path="/profile">
-//                 <Profile />
-//             </Route>
-//             <Route>
-//                 <App />
-//             </Route>
-//         </Switch>
-//     </div>
-// }
-
 
 
 import React from 'react'
@@ -50,6 +8,7 @@ import Chat from '../components/chat/chat'
 import Profile from '../components/profile/profileComponent'
 import Home from '../components/Home/Home'
 import Chats from '../components/chats/chats'
+import { News } from '../components/news/news'
 
 export default function Router(props) {
     return (
@@ -58,6 +17,7 @@ export default function Router(props) {
                 <Link to="/">Home</Link>
                 <Link to="/chats">Chats</Link>
                 <Link to="/profile">Profile</Link>
+                <Link to="/news">News</Link>
             </div>
 
             <Switch>
@@ -95,9 +55,12 @@ export default function Router(props) {
                 <Route path="/profile">
                     <Profile />
                 </Route>
+                <Route path='/news' component={News} />
+
                 <Route>
                     <p>404: not found</p>
                 </Route>
+
             </Switch>
         </div>
     )
