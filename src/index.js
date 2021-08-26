@@ -6,15 +6,29 @@ import App from './components/App/App';
 import { BrowserRouter } from 'react-router-dom';
 import Router from './router/router';
 import { Provider } from 'react-redux'
-import { store } from './react__5/store';
+import { persistor, store } from './components/store/store';
+import { PersistGate } from 'redux-persist/integration/react';
+import './components/firebaseService/firebaseService'
+import firebase from 'firebase';
+{
+  firebase.firestore().enablePersistence()
+  .catch((err) => {
+    if (err.code == 'failed-precondition') {
 
+    } else if (err.code == 'unimplemented') {
 
+    }
+  })
+}
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
-        <Router />
-      </BrowserRouter>
+      <PersistGate persistor={persistor}>
+        <BrowserRouter>
+
+          <App />
+        </BrowserRouter>
+      </PersistGate>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
