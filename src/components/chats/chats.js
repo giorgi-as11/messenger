@@ -10,19 +10,11 @@ import chatsReducer from '../reducers/chats'
 import { addChat, removeChat } from '../actions/chat'
 import chatsSelector from '../selectors/selectors'
 export default function Chats(props) {
-    const {
-        // chats = [],
-        currentChat,
-        onCurrentChatChange,
-        // onAddChat
-        // onRemoveChat,
-    } = props
     const history = useHistory()
 
     const chats = useSelector(state => state.chats)
 
     const handleChatLinkClick = (chat) => {
-        onCurrentChatChange(chat)
         history.push(`/chats/${chat.id}`)
     }
 
@@ -44,7 +36,7 @@ export default function Chats(props) {
             <div className="chats__sidebar">
                 <List className="app__sidebar" subheader={<p>Список чатов</p>}>
                     {Object.values(chats).map((chat) => (
-                        <div style={{ display: 'flex' }}>
+                        <div key={chat.id} style={{ display: 'flex' }}>
                             <ListItem
                                 button
                                 component="a"

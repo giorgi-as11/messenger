@@ -1,3 +1,4 @@
+import { keys } from '@material-ui/core/styles/createBreakpoints'
 import PropTypes from 'prop-types'
 import React from 'react'
 
@@ -5,7 +6,7 @@ function Message(props) {
     const { nick = '1234id', render = () => { } /* lodash.noop */ } = props
 
     return (
-        <p id={nick}>
+        <p >
             {props.author}: {props.text}
             <br />
             {render({ className: 'message__postscriptum' })}

@@ -1,11 +1,10 @@
-import { CHANGE__NAME } from "../actions/profile"
-
-import { CHANGE__IS__ONLINE } from "../actions/profile"
+import { CHANGE__IS__AUTHED, CHANGE__NAME, CHANGE__IS__ONLINE } from "../actions/profile"
 
 const initialState = {
     isOnline: true,
     name: 'giorgi',
     age: 25,
+    isAuthed: false
 }
 
 export default function Reducer(state = initialState, action) {
@@ -21,6 +20,12 @@ export default function Reducer(state = initialState, action) {
             return {
                 ...state,
                 isOnline: action.payload.isOnline
+            }
+        }
+        case CHANGE__IS__AUTHED: {
+            return {
+                ...state,
+                isAuthed: action.payload.IsAuthed
             }
         }
         default:

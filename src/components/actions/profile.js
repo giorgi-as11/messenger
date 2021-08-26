@@ -1,5 +1,6 @@
 export const CHANGE__NAME = 'PROFILE::CHANGE__NAME'
 export const CHANGE__IS__ONLINE = 'PROFILE::CHANGE__IS__ONLINE'
+export const CHANGE__IS__AUTHED = 'PROFILE::CHANGE__IS__AUTHED'
 
 export const changeName = (name) => ({
     type: CHANGE__NAME,
@@ -8,6 +9,12 @@ export const changeName = (name) => ({
     }
 })
 
+export const chageIsAuthed = (IsAuthed) => ({
+    type: CHANGE__IS__AUTHED,
+    payload: {
+        IsAuthed
+    }
+})
 
 export const changeIsOnline = (isOnline) => ({
     type: CHANGE__IS__ONLINE,

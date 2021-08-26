@@ -8,7 +8,7 @@ export default function Profile() {
     const dispatch = useDispatch()
 
 
-    const { age, name, isOnline } = useSelector(state => state.profile)
+    const { age, name, isOnline, } = useSelector(state => state.profile)
 
 
     const handleNameSubmit = (newName) => {
