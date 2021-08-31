@@ -8,46 +8,30 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addMessage, addMessageThunk } from '../actions/messages'
 import { useIsChatExists } from '../../hooks/useIsChatExists'
 import firebase from 'firebase'
+import { handleMessagesOnChange } from '../actions/messages'
 const Chat = (props) => {
+
+
 
     const { chatId } = useParams()
 
     const messageList = useSelector(state => state.messages[chatId] || [])
-    // const [messageList, setMessageList] = React.useState([])
     const dispatch = useDispatch()
-    
-    React.useEffect(() => {
 
-        firebase.database().ref('messages').child(chatId).get().then((snapShot) => {
-            console.log(snapShot)
-        })
+    React.useEffect(() => {
+        dispatch(handleMessagesOnChange(chatId))
     }, [])
 
     const handleMessageSubmit = (newMessageText) => {
-
-        dispatch(addMessageThunk({
-            author: AUTHORS.ME,
-            text: newMessageText,
-            id: `message/${Date.now()}`
-        },
-            chatId
-        ))
-        console.log({
-            author: AUTHORS.ME,
-            text: newMessageText,
-            id: `message/${Date.now()}`
-        })
-        firebase
-            .database()
-            .ref(`messages`)
-            .child(chatId)
-            .push({
-                author: AUTHORS.ME,
-                text: newMessageText,
-                id: `message/${Date.now()}`
-            })
-
-
+        dispatch(
+            addMessageThunk(
+                {
+                    author: AUTHORS.ME,
+                    text: newMessageText,
+                    id: `message/${Date.now()}`
+                },
+                chatId
+            ))
     }
 
     const isChatExists = useIsChatExists({ chatId })

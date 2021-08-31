@@ -7,10 +7,18 @@ import Input from '../Input/Input'
 import { Button } from '@material-ui/core'
 import { useDispatch, useSelector } from 'react-redux'
 import chatsReducer from '../reducers/chats'
-import { addChat, removeChat } from '../actions/chat'
+import firebase from 'firebase'
+import { addChat, removeChatFromDB, removeChat, addChatToDB, modificationChatFirebase } from '../actions/chat'
 import chatsSelector from '../selectors/selectors'
+
+
+
+
 export default function Chats(props) {
     const history = useHistory()
+    const [nameState, setNameState] = React.useState()
+    const [idState, setIdState] = React.useState()
+
 
     const chats = useSelector(state => state.chats)
 
@@ -21,16 +29,18 @@ export default function Chats(props) {
     const dispatch = useDispatch()
 
     const handleRemoveChat = (chatId) => {
-        dispatch(removeChat(chatId))
+        dispatch(removeChatFromDB(chatId))
     }
+
 
 
     const handleAddChat = (name) => {
-
-        dispatch(addChat(name, `chats ${Date.now()}`))
-
+        let id = `chats ${Date.now()}`
+        dispatch(addChatToDB(name, id))
     }
-
+    React.useEffect(() => {
+        dispatch(modificationChatFirebase())
+    }, [])
     return (
         <div className="chats">
             <div className="chats__sidebar">

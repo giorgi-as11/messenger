@@ -4,16 +4,25 @@ import { changeIsOnline, changeName, changeIsOnlineThunk } from '../actions/prof
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Input from '../Input/Input'
+import firebase from 'firebase';
+let firebaseProfileChangings = (newname) => {
+    firebase.database().ref(`profile`).push(newname)
+}
+
 export default function Profile() {
     const dispatch = useDispatch()
 
 
     const { age, name, isOnline, } = useSelector(state => state.profile)
 
+    // React.useEffect(() => {
+    //     firebaseProfileChangings(name)
+    // }, [])
 
     const handleNameSubmit = (newName) => {
         console.log('action with', newName)
         dispatch(changeName(newName))
+        firebaseProfileChangings(newName)
     }
 
     const handleChange = (event) => {
